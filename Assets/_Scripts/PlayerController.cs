@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     public float gravity;
 
+
     CharacterController controller;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
