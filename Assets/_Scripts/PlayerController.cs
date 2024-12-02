@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     public float gravity;
 
+    public float fallSpeed;
 
     CharacterController controller;
     public float turnSmoothTime = 0.1f;
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            gravity = 5;
+            gravity = 6;
         }
 
     }
@@ -45,10 +46,12 @@ public class PlayerController : MonoBehaviour
     {
         if (!controller.isGrounded)
         {
-            controller.Move(Vector3.down * gravity * Time.deltaTime);
+            fallSpeed = fallSpeed + gravity * Time.deltaTime;
+            controller.Move(Vector3.down * fallSpeed * Time.deltaTime);
         }
         if(controller.isGrounded)
         {
+            fallSpeed = 0;
             jumpTime = Time.time + jTime;
         }
     }
